@@ -1,0 +1,27 @@
+<section class="signup" ng-controller="SignupController">
+  <div class="signup-container">
+    <h1>Sign Up</h1>
+    <form ng-submit="signup()">
+      <div class="form-feild">
+        <label for="name">Name:</label>
+        <input type="text" id="name" ng-model="user.name" required />
+      </div>
+      <div class="form-feild">
+        <label for="username">Username:</label>
+        <input type="text" id="username" ng-model="user.username" required />
+      </div>
+      <div class="form-feild">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          ng-model="user.password"
+          required
+        />
+      </div>
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p>Already have an account? <a href="#!login">Login</a></p>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="ToDo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h1>Organise Your Tasks</h1>
+
+    <div class="container">
+      <ng-view></ng-view>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="/services/storageService.js"></script>
+    <script src="/controllers/login.js"></script>
+    <script src="/controllers/signup.js"></script>
+    <script src="/controllers/todo.js"></script>
+  </body>
+</html>

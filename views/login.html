@@ -1,0 +1,22 @@
+<section class="login" ng-controller="LoginController">
+  <div class="login-container">
+    <h1>Login</h1>
+    <form ng-submit="login()">
+      <div class="form-feild">
+        <label for="username">Username:</label>
+        <input type="text" id="username" ng-model="user.username" required />
+      </div>
+      <div class="form-feild">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          ng-model="user.password"
+          required
+        />
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="#!signup">Sign up</a></p>
+  </div>
+</section>

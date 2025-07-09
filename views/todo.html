@@ -1,0 +1,45 @@
+<section class="todo" ng-controller="TodoController">
+  <div class="header">
+    <button ng-click="logout()" class="logout-btn">Logout</button>
+  </div>
+
+  <div class="new">
+    <form ng-submit="addTodo()">
+      <input
+        type="text"
+        class="todo-input"
+        ng-model="newTodo"
+        placeholder="Add a new task"
+        required
+      />
+      
+      <div class="todo-options">
+        <select class="priority" ng-model="newTodoPriority">
+          <option value="" disabled selected>Select priority</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+
+        <input type="date" ng-model="newTodoDueDate" placeholder="Due Date" />
+      </div>
+
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+  <ul
+    ng-show="todos.length != 0"
+    ng-repeat="todo in todos track by $index"
+    class="todo-item"
+  >
+    <div class="todo-text">
+      <input type="checkbox" ng-model="todo.completed" />
+      <span ng-class="{ completed: todo.completed }">{{ todo.text }}</span>
+    </div>
+    <div class="todo-actions">
+      <button ng-click="editTodo($index)">Edit</button>
+      <button ng-click="removeTodo($index)">Remove</button>
+    </div>
+  </ul>
+</section>
