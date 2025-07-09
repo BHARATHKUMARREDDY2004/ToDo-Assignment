@@ -106,4 +106,9 @@ app.service("StorageService", function() {
         localStorage.removeItem("loggedInUser");
     };
 
+    this.getName = function() {
+        const session = this.getSession();
+        return session ? session.name : null;
+    }
+
 });

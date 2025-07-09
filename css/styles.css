@@ -72,11 +72,6 @@ input[type="password"] {
     border-radius: 4px;
 }
 
-input[type="checkbox"]{
-    padding: 10px;
-}
-
-
 
 button {
     margin: 10px;
@@ -161,4 +156,22 @@ input[type="date"]{
     border-radius: 4px;
     height: 30px;
     text-wrap: wrap;
+}
+
+.completed{
+    text-decoration: line-through;
+    color: #55555594;
+}
+
+.todo{
+    padding-top: 20px;
+}
+
+.filter{
+    margin-left: 10px;
+}
+
+.filter .priority{
+    width: 150px;
+    margin: 0 10px;
 }

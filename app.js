@@ -3,8 +3,8 @@ var app = angular.module("ToDo", ["ngRoute"]);
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/", {
-            template: "<div></div>",
-            controller: "HomeController"
+            templateUrl: "index.html",
+            controller: "MainController"
         })
         .when("/signup", {
             templateUrl: "views/signup.html",
@@ -23,9 +23,9 @@ app.config(function ($routeProvider) {
         });
 });
 
-
-app.controller("HomeController", function ($scope, $location, StorageService) {
+app.controller("MainController", function ($scope, $location, StorageService) {
     var session = StorageService.getSession();
+    $scope.name = StorageService.getName();
 
     if (session) {
         $location.path("/todo");

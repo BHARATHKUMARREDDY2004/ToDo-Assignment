@@ -1,8 +1,12 @@
 app.controller("TodoController", function ($scope, $location, StorageService) {
     $scope.todos = [];
     $scope.newTodo = "";
+    $scope.newTodoDueDate;
+    $scope.newTodoPriority = "";
+    $scope.filter = 'incomplete';
+    $scope.priorityFilter = 'high';
 
-    if (!StorageService.getSession()){
+    if (!StorageService.getSession()) {
         $location.path("/login");
         return;
     }
@@ -11,7 +15,7 @@ app.controller("TodoController", function ($scope, $location, StorageService) {
     $scope.todos = StorageService.getTodos($scope.currentUser.username) || [];
 
     $scope.addTodo = function () {
-        if($scope.newTodo.trim() === "") {
+        if ($scope.newTodo.trim() === "") {
             alert("Please enter a todo item.");
             return;
         }
@@ -19,6 +23,8 @@ app.controller("TodoController", function ($scope, $location, StorageService) {
         $scope.todos.push({
             text: $scope.newTodo,
             completed: false,
+            dueDate: $scope.newTodoDueDate || null,
+            priority: $scope.newTodoPriority,
             timeStamp: new Date().toISOString()
         });
 
@@ -42,8 +48,32 @@ app.controller("TodoController", function ($scope, $location, StorageService) {
         StorageService.setTodos($scope.currentUser.username, $scope.todos);
     };
 
-    $scope.logout = function() {
+    $scope.$watch('todos', function (newTodos) {
+        StorageService.setTodos($scope.currentUser.username, newTodos);
+    }, true);
+
+    $scope.logout = function () {
         StorageService.clearSession();
         $location.path("/login");
     };
+
+    $scope.filteredTodos = function () {
+        return $scope.todos.filter(function (todo) {
+            var statusMatch = (
+                $scope.filter === 'all' ||
+                ($scope.filter === 'completed' && todo.completed) ||
+                ($scope.filter === 'incomplete' && !todo.completed)
+            );
+
+            var priorityMatch = (
+                $scope.priorityFilter === 'all' ||
+                todo.priority === $scope.priorityFilter
+            );
+
+            return statusMatch && priorityMatch;
+        });
+    };
+
+
+
 });

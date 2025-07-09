@@ -6,8 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body>
-    <h1>Organise Your Tasks</h1>
+  <body ng-controller="MainController">
+    <h1>Welcome!<br>Organise Your Tasks <span ng-show="name"> {{ name }} </span></h1>
 
     <div class="container">
       <ng-view></ng-view>

@@ -20,8 +20,5 @@ app.controller("LoginController", function($scope, $location, StorageService) {
             alert("Invalid username or password. or User not found.");
         }
     }
-
-    $scope.goToSignup = function() {
-        $location.path("/signup");
-    }
+    
 });

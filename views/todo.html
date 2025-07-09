@@ -12,7 +12,7 @@
         placeholder="Add a new task"
         required
       />
-      
+
       <div class="todo-options">
         <select class="priority" ng-model="newTodoPriority">
           <option value="" disabled selected>Select priority</option>
@@ -28,9 +28,27 @@
     </form>
   </div>
 
+  <div class="filter">
+    <label
+      >Show:
+          </label>
+      <select ng-model="filter" class="priority">
+        <option value="all">All</option>
+        <option value="incomplete">Incomplete</option>
+        <option value="completed">Completed</option>
+      </select>
+
+      <select ng-model="priorityFilter" class="priority">
+        <option value="all">All Priorities</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+      </select>
+  </div>
+
   <ul
-    ng-show="todos.length != 0"
-    ng-repeat="todo in todos track by $index"
+    ng-show="filteredTodos().length != 0"
+    ng-repeat="todo in filteredTodos() track by $index"
     class="todo-item"
   >
     <div class="todo-text">
